@@ -38,4 +38,8 @@ for(int i = 0; i < n; i++) {
 ## do while
 他的问题是最少被执行一次的。
 类执行顺序？
+## git的使用
+git 在拉取一个仓库的内容后要是想添加文件的话，需要做下面2个大动作：
+1， git pull --rebase origin master还有回复现场的作用了。
+2， push -u origin master
 
