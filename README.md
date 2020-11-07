@@ -18,4 +18,5 @@
 ## 字节的笔试换装的实现
 **总共有几种情况：1，全0或者全1的时候；2,1110或者11110的时候考虑的问题有点找规律的意思**
 
-  
+## test image
+![test](https://github.com/InternetJun/testConnect/blob/main/pics/algorithm_complex.jpg)
