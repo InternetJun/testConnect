@@ -19,7 +19,7 @@
 **总共有几种情况：1，全0或者全1的时候；2,1110或者11110的时候考虑的问题有点找规律的意思**
 
 ## test image
-![test](https://github.com/InternetJun/testConnect/blob/main/algorithm_complex.jpg)
+![test](https://github.com/InternetJun/testConnect/blob/main/algorithm_complex.png)
 ## final的关键字的初始化的时机
 ~~~ java
 class Demo{
