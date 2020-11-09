@@ -1,3 +1,6 @@
+# mysql遇到的问题
+Could not open unix socket lock file /tmp/mysql.sock.lock；
+他是需要去解决的。要是不能connect的话，可以添加映射就好了，
 # 声网的一个编程
 **Q:一个数由n个1组成，不可以被2或5整除，但是可以被3整除。求出最小的符合条件数的位数是几个？**
 A:1，*3可以除的话就会有各个数的和为3的倍数的。*
