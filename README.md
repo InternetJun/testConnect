@@ -1,3 +1,33 @@
+# leetcode下一个排列
+![动图](https://assets.leetcode-cn.com/solution-static/31/31.gif)
+思路:
+1, 从右到左第一个下降的数
+2, 一样的方向第一个比找出的数大
+3, 对找出的数的以后序列进行逆序的输出。
+~~~ java
+while(i >= 0 && nums[i] >= nums[i+1]){
+    i--;
+}
+if(i >= 0){
+    int j = nums.length-1;
+    while(j >= 0 && nums[j] <= nums[i]){
+        j--;
+    }
+    swap(nums, i, j);
+    reverse(nums, i+1);
+}
+
+//只要left < right;
+public void reverse(int[] nums, int i){
+    int R = nums.length-1;
+    int L = i;
+    while(L < R){
+        swap(nums, L, R);
+        L++;
+        R--;
+    }
+}
+~~~
 # mysql遇到的问题
 Could not open unix socket lock file /tmp/mysql.sock.lock；
 他是需要去解决的。要是不能connect的话，可以添加映射就好了，
