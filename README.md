@@ -1,3 +1,14 @@
+# 自定义的接口是怎么样的？
+@Retention(保留代码的时间的问题)
+@Document（@Documented用于描述其它类型的annotation应该被作为被标注的程序成员的公共API，
+因此可以被例如javadoc此类的工具文档化。Documented是一个标记注解，没有成员。）
+@Target()
+@Inherieted(它是说被继承的)
+@interface Not{
+
+}
+
+[关于注解的基本概念](https://www.cnblogs.com/peida/archive/2013/04/24/3036689.html)
 # 动态规划解决的问题
 dp[i][j]的定义是什么？
 dp(i, j) = j为下一个的字母，i为是一个上一个的字母。注意的是可以顺时针和逆时针的。所以的是有
