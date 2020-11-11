@@ -1,3 +1,37 @@
+# 简单的死锁的例子
+自己的实现：
+~~~ java
+public class DeadLock {
+    public static Object o1 = new Object();
+    public static Object o2 = new Object();
+    /*要有几个类才能这样呢?*/
+    public static void main(String[] args) throws InterruptedException {
+        new Thread(()->{
+
+        },"a").start();
+        try {
+            synchronized (o1) {
+                Thread.sleep(5000);
+                synchronized (o2){
+                    System.out.println("I get the o2 obj");
+                }
+            }
+            synchronized (o2) {
+                Thread.sleep(5000);
+                synchronized (o1){
+                    System.out.println("I get the o1 obj");
+                }
+            }
+        } catch (InterruptedException e) {
+            System.out.println("I am a dead lock!");
+            e.printStackTrace();
+        }
+
+
+    }
+}
+~~~
+<font color = 'red'>并没有出现要的结果，因为我在一个线程内完成的工作啊。但是死锁必须至少有2个线程争抢资源的。</font>
 # SomeThink
 这是我2020年参加秋招的各种程序题目的总结。
 # 顺便记录下自己的心情
