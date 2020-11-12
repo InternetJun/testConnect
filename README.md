@@ -1,3 +1,45 @@
+# 内存屏障
+
+4种cases: load和store的组合问题。
+
+LS，LL，SL，SS；
+
+# 类加载器和双亲委派
+
+ **类加载器** 就是根据指定全限定名称将class文件加载到`JVM`内存，转为Class对象。 
+
+BootStrap，Extension, Application.
+
+![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91c2VyLWdvbGQtY2RuLnhpdHUuaW8vMjAxOS83LzIzLzE2YzFjNTRjZjRhZDg4NmI_aW1hZ2VWaWV3Mi8wL3cvMTI4MC9oLzk2MC9mb3JtYXQvd2VicC9pZ25vcmUtZXJyb3IvMQ?x-oss-process=image/format,png)
+
+3）为什么需要双亲委派模型？
+
+在这里，先想一下，如果没有双亲委派，那么用户是不是可以**自己定义一个java.lang.Object的同名类**，**java.lang.String的同名类**，并把它放到ClassPath中,那么**类之间的比较结果及类的唯一性将无法保证**，因此，为什么需要双亲委派模型？**防止内存中出现多份同样的字节码**
+
+4）怎么打破双亲委派模型？
+
+打破双亲委派机制则不仅**要继承ClassLoader**类，还要**重写loadClass和findClass**方法。
+
+## JVM调优
+
+3大args：-Xss（规定了虚拟栈的大小），-Xms（堆的初始值），-Xmx（max堆）；
+
+## GC触发
+
+1，System.Gc
+
+2，系统决定的。
+
+# JVM的内存图
+
+![JVM](https://img-blog.csdnimg.cn/20191018124901149.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9oZWxsby5ibG9nLmNzZG4ubmV0,size_16,color_FFFFFF,t_70)
+
+<font color='red'>method area and Heap is common</font>
+
+虚拟机栈里有：==1，局部args；2，操作数栈；3，动态链接；4，方法返回地址。==
+
+# 对github的某一个的文件下载
+**他是做不到的，需要某个工具才能实现这样的功能。**
 # 自定义的接口是怎么样的？
 @Retention(保留代码的时间的问题)
 @Document（@Documented用于描述其它类型的annotation应该被作为被标注的程序成员的公共API，
