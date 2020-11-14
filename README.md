@@ -1,3 +1,77 @@
+# 有趣的排序（计数排的应用）
+Leetcode1122
+
+```java
+//int[] arr1 = {2,3,1,3,2,4,6,7,9,2,19};int[] arr2 = {2,1,4,3,9,6};
+public int[] sort(int[] arr1, int[] arr2) {
+    //要对每一个的数字进行统计
+    int[] frequences = new int[1001];      
+    for(int num: arr1) {
+        frequences[num]++;
+    }
+    int index = 0;
+    for(int n : arr2) {
+        /*if(frequences[n] == 0) {
+            continue;
+        }
+        tmp[index++] = n;
+        frequences[n]--;
+        对一个元素重复的放入不是这样的实现的。
+        */
+    }
+    //只剩下了只有一个的了。
+}
+```
+2个解决办法：
+
+1利用的是计数排序
+
+~~~ java
+public int[] sort(int[] arr1, int[] arr2) {
+    //要对每一个的数字进行统计 
+    int upper = 0;
+    for(int x:arr1) {
+    	upper = Math.max(upper, x);
+    }
+    int[] frequences = new int[upper+1];
+    for(int item: arr1) {
+        ++frequences[item];
+    }
+    
+    int tmp = new int[arr1.length];
+    int index = 0;
+    for(int x: arr2) {
+        for(int i = 0; i < frequences[x]; i++) {
+        	tmp[i] = x;
+        }
+        frequences[x] = 0;
+    }
+    for(int x = 0; x <= upper; ++x) {
+        for(int i = 0; i < frequences[x]; ++i) {
+         	tmp[index++] = x;   
+        }
+    }
+}
+~~~
+
+2利用自己自定义的排序算法。
+
+主要的思想是有对map存储了arr2的元素和下标和list里面有arr1的所有元素。
+
+~~~ java
+Collections.sort(list,(x,y) ->{
+     if(map.containsKey(x) || map.containsKey(y))
+                /*x-y是需要升序的意思.
+                * 就算有一个在map中,一个不在的情况,map的也是在前面的排序的.!!!
+                * */
+                return map.getOrDefault(x, 1001) - map.getOrDefault(y, 1001);
+      return x - y;
+});
+~~~
+
+
+
+
 # ThreadLocal
 Obj不能对多线程共享的问题。
 但是回收的时候是需要对key的回收和val的**回收**
