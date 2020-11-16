@@ -1,3 +1,29 @@
+# 有趣的排序
+要的第一个数前面有几个大于他的数，后面的数就是他的大小.很想一个找规律的数学题目。
+~~~ java
+ public static int[][] reconstructQueue(int[][] people) {
+        // [7,0], [7,1], [6,1], [5,0], [5,2], [4,4]
+        // 再一个一个插入。
+        // [7,0]
+        // [7,0], [7,1]
+        // [7,0], [6,1], [7,1]
+        // [5,0], [7,0], [6,1], [7,1]
+        // [5,0], [7,0], [5,2], [6,1], [7,1]
+        // [5,0], [7,0], [5,2], [6,1], [4,4], [7,1]。
+        Arrays.sort(people, (o1, o2) -> o1[0] == o2[0] ? o1[1] - o2[1] : o2[0] - o1[0]);
+
+        LinkedList<int[]> list = new LinkedList<>();
+        for (int[] i : people) {
+            //i_1的是k的大小。i是里面的元素了。add(int index, E element)
+            list.add(i[1], i);
+        }
+        for(int[] item : list){
+            System.out.printf(Arrays.toString(item)+"\t");
+        }
+
+        return list.toArray(new int[list.size()][2]);
+    }
+~~~
 # 移除k位数
 对一个数字移除k个字母，后相对的位置不变的，问最小的数是多少？（[leetcode402](https://leetcode-cn.com/problems/remove-k-digits/)）
 ~~~
