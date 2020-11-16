@@ -1,3 +1,19 @@
+# 对字典的搜索
+【lee127】：要求要给定了start，end，dict。要你寻找出最短的路径出来。有基本的思想是对他进行的是BFS的搜索。
+~~~
+有一个的问题就是要有26个小写的字母，不能构成回路的问题了。
+用上一个set的集合了。
+~~~
+~~~ java
+curChar = i;
+if(dict.contains(key)) {
+  if(!visit()) {
+  queue.add();
+  visit = !visit;
+  }
+}
+char = curChar;
+~~~
 # 对二叉树的遍历的顺序的确定
 [leetcode652](https://leetcode-cn.com/problems/find-duplicate-subtrees/)
 相同结构的子树有多少呢？思路是
