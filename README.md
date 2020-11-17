@@ -1,3 +1,21 @@
+# 对矩阵元素的搜索
+题目的原题是1143。有利用的是dirs和bfs
+~~~ java
+int[] dc = {1, 1, -1, -1};
+int[] dr = {1,-1, -1, 1};
+public int[][] allDis() {
+for(int dist = 1; dist < MaxDist;dist++){
+  row--;
+  for(DIR) {
+  //他的while很重要！
+    while(i % 2== 0;){
+    }
+  }
+}
+}
+~~~
+
+
 # 对字典的搜索
 【lee127】：要求要给定了start，end，dict。要你寻找出最短的路径出来。有基本的思想是对他进行的是BFS的搜索。
 ~~~
