@@ -32,7 +32,7 @@ public void adjustHeap(int[] nums, int n, int i) {
 			nums[i] = nums[k];
 			i = k;
 		}else{
-			//比较元素的大小；
+		//对应的是一样的。可以退出循环。
 			break;
 		}
 		arr[i] = temp;
@@ -49,7 +49,7 @@ public void adjustHeapDes(int[] nums, int n, int i) {
 			nums[i] = nums[k];
 			i = k;
 		}else{
-			//比较元素的大小；
+		//不符合的要求了，到顶了可以break了。
 			break;
 		}
 		arr[i] = temp;
