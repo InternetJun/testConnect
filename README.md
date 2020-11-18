@@ -8,7 +8,7 @@ ABCABC对应于012012；
 0 1 20 1 2；
 0 1 20 12；
 一共四种的情况。
-left+right+interval的组合；
+left*right+interval-1个组合；
 ~~~
 # 对矩阵元素的搜索
 题目的原题是1143。有利用的是dirs和bfs
