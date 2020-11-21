@@ -1,3 +1,54 @@
+# 对链插入排序
+~~~ java
+  有几行的代码
+  last.next = cur.next ;
+  cur.next = pre.next;
+  pre.next = cur;
+~~~
+2. 降低我们的复杂度呢？
+利用的是我们的归并的排序
+
+~~~ java
+//对他进行的是归并排序，要的是查找中点啊
+fast = head, slow = head;
+while(fast.next != null && fast.ne.ne != null) {
+  fast = fast.ne.next;
+  slow = slow.next;
+}
+//还要把他们断开 
+ListNode mid = slow.next;
+mid.next = null;
+sort(head);
+sort(mid);
+merge(head, mid);
+return merge();
+
+//其实对于这样的操作，是对于左右两边的排序好了的结果的。
+public ListNode merge(){
+  if(left == null) {
+    return right;
+  } else{
+    return left;
+  }
+}
+
+~~~
+# 常用的java基本的名词
+[java常用名词的解释](https://www.cnblogs.com/yw-ah/p/5795751.html)
+1. POJO
+简单的Java对象。
+2. EJB（Enterprise JavaBean）
+一组JavaBean的对象.为了满足一个业务组合成的JavaBean
+3.JavaBean
+必须是实现了serializable的接口的。比POJO多了点简单的逻辑内容。
+还有的是可以对业务的处理了，pojo的格式就是数据的载体吧。
+# 对数据的讨论问题
+# 对IO流的类
+FileReader；
+InputStream是一个抽象类的。继承了Closed的接口
+InputStreamReader是一个对文件读取内容；
+BufferedReader
+
 # 数字的构成的情况
 ABCABC对应于012012；
 ~~~ java
