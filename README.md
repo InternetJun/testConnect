@@ -1,7 +1,7 @@
 # 对字母的编码（）
-原题的解决。A-Z对应于1~26的分析：
+原题的解决。A-Z对应于1-26的分析：
 ![最佳的分析](https://pic.leetcode-cn.com/c09dc70d3085792b2b8417843e297f6841fd12f921b0e4fe28a2c4a8dc86dd1e-image.png)
-但携程考虑的是对0~25的编码呢？
+但携程考虑的是对0-25的编码呢？
 ~~~ java
  public int numDecodings(String s) {
      /*   if (s.charAt(0) == '0') {
