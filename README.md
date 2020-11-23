@@ -1,4 +1,33 @@
- # 最小的箭（leetcode-452）
+# 对字母的编码（）
+原题的解决。A-Z对应于1~26的分析：
+![最佳的分析](https://pic.leetcode-cn.com/c09dc70d3085792b2b8417843e297f6841fd12f921b0e4fe28a2c4a8dc86dd1e-image.png)
+但携程考虑的是对0~25的编码呢？
+~~~ java
+ public int numDecodings(String s) {
+     /*   if (s.charAt(0) == '0') {
+            return 1;
+        }*/
+        int pre = 1, curr = 1;
+        for (int i = 1; i < s.length(); i++) {
+            int tmp = curr;
+            if (s.charAt(i)== '0') {
+                if (s.charAt(i - 1) == '1' || s.charAt(i - 1) == '2') {
+                    curr = pre+curr;
+                }else if(s.charAt(i - 1) > '2'){
+                    curr = pre;
+                }
+            }else if (s.charAt(i - 1) == '1' || (s.charAt(i - 1) == '2' && s.charAt(i) >= '1' && s.charAt(i - 1) <= '5')){
+                curr = curr + pre;}
+            else if (s.charAt(i-1) == 0){
+                curr = pre;
+            }
+            pre = tmp;
+        }
+        return curr;
+    }
+~~~
+**他主要是对0的特殊的处理啊。还有压缩空间的问题。**
+# 最小的箭（leetcode-452）
 他和之前的题目有轻微的区别的。需要怎么处理呢？
 **liyong Arrays.sort(points, (p1,p2)-> p1[1] < p2[1] ? -1: 1)**
 进行升序排序。重要的是不能超出***范围啊***
