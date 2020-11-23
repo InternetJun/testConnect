@@ -21,7 +21,7 @@ while(fast.next != null && fast.ne.ne != null) {
 }
 //还要把他们断开 
 ListNode mid = slow.next;
-mid.next = null;
+slow.next = null;
 sort(head);
 sort(mid);
 merge(head, mid);
