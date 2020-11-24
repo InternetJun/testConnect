@@ -95,8 +95,10 @@ ABCABC对应于012012；
 left*right+interval-1个组合；
 ~~~
 # 对矩阵元素的搜索
-题目的原题是1143。有利用的是dirs和bfs
+题目的原题是1130。有利用的是dirs和bfs;
+我们每次从该正方形边框的上顶点出发，**依次经过右顶点、下顶点和左顶点，最后回到上顶点。**
 ~~~ java
+//他和那个bfs有点区别的其实,他的功力更好啊,还要数学的知识.
 int[] dc = {1, 1, -1, -1};
 int[] dr = {1,-1, -1, 1};
 public int[][] allDis() {
@@ -104,7 +106,7 @@ for(int dist = 1; dist < MaxDist;dist++){
   row--;
   for(DIR) {
   //他的while很重要！
-    while(i % 2== 0;){
+    while(i % 2== 0&&  c0!= col)|| (i%2 != 0 && r0!= row)){
     }
   }
 }
