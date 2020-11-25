@@ -1,3 +1,21 @@
+# springSecurity对多登陆的控制
+~~~ java
+	.maxSessionsPreventsLogin(true);
+    //还要加上的是对bean的处理啊，因为涉及到了源码的改动上和session的感知上。
+    //再这样的处理是基于我们的内存的处理啊。怎么到数据库的层面上呢？ 他需要对我们的dao的类进行hascode和equals济宁重写的
+    //在一次的有前后端分离的json问题。怎么处理？
+~~~
+**要是你还想获取他的元素值，必须要重写，才可以有我们要的元素啊~！！**
+2. 对前后端项目分离中(太难了)
+1.SecurityConfig的配置
+2.SessionRegistryImpl实例
+3.LoginFliter
+4. 我们重新创建一个 ConcurrentSessionFilter 的实例，
+
+dp记录的是len = i时的num.但是有一种的情况.
+下标小于num.但是数值更大的情况.
+//自己对于参考系的不确定啊, 这里的时要对nums[i]和dp的来比较啊,参考的是dp[mid]的大小.
+//还有的是对一般的做法是有dp[i]表示的是i坐标下的最短长度了.
 # 项目对Annation的使用
 ~~~ java
 package com.nowcoder.community.controller.interceptor;
