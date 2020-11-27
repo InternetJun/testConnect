@@ -1,3 +1,4 @@
+
 # 最长的子序列length
 有如下几个点需要注意:
 nums = [1 2 3 2 4];
@@ -40,7 +41,10 @@ Arrays.sort(points, (p1,p2)-> p1[1] < p2[1] ? -1: 1);
             }
             return x - y;
         });
-
+//一维的数组排序；需要转换为Integer的类型的。要不然会报错的。
+ int[] arr = { 3, 2, 1, 4, 6, 1, 8 };
+Integer[] a = new Integer[arr.length];
+Arrays.sort(a, (o1, o2) -> o2 - o1);
 ~~~
 
 # 合并区间和视频区间的逆问题
