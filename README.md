@@ -1,3 +1,52 @@
+# 最长的子序列length
+有如下几个点需要注意:
+nums = [1 2 3 2 4];
+1) dp数组的定义问题, dp = new int[len+1];
+解释:dp的定义是长度为i,在nums中可以记录的最小的值(当然要满足递增)
+有数组为len了.所以需要的是len+1的长度.
+---
+2) 在二分查找中.从1开始.0没有了定义.
+---
+3) 最后的dp输出的情况是[0, 2, 2, 3, 4, 0];
+**dp的定义是i位置上最小的数了.**
+---
+**4) 定义的pos的作用**
+为了防止一种的情况: 初始的dp[1].
+# 一趟的顺序查找
+1 5 2 3 5;知道了重复的是5,缺失的是4;
+1-5的索引和数字是一一对应的, 要是有重复的话,第二次的进入会是负数的.
+还有缺失的元素呢是对应的索引+1了.
+# 对一维的排序
+~~~ java
+PriorityQueue<Integer> pq = new PriorityQueue(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o2-o1;
+            }
+        });
+	//他是2维的排序了.
+Arrays.sort(points, (p1,p2)-> p1[1] < p2[1] ? -1: 1);
+//还有lambda对1维的排序?
+//他是对list的列表进行排序的.
+ Collections.sort(list, (x, y) -> {
+            if(map.containsKey(x) || map.containsKey(y)) {
+                /*x-y是需要升序的意思.
+                 * 就算有一个在map中,一个不在的情况,map的也是在前面的排序的.!!!
+                 * */
+                System.out.printf("x---"+map.getOrDefault(x, 1001)+'\t');
+                System.out.printf("y---"+map.getOrDefault(y, 1001)+'\t');
+                System.out.println();
+                return map.getOrDefault(x, 1001) - map.getOrDefault(y, 1001);
+            }
+            return x - y;
+        });
+
+~~~
+
+# 合并区间和视频区间的逆问题
+对一个区间进行分割后, 要求最少的区间片段.
+ int[][] clips ={{0,2},{4,6},{8,10},{1,9},{1,5},{5,9}};
+ 他的思想是贪心的算法啊.
 # springSecurity对多登陆的控制
 ~~~ java
 	.maxSessionsPreventsLogin(true);
