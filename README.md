@@ -1,3 +1,63 @@
+# 字符的交替的输出的问题
+有遇到一个问题是；怎么回到第一个位置呢？
+aaabbcc的输出的过程是：
+~~~
+/*[a , a,  , a,  , b]
+[a, b, a,  , a,  , b]
+[a, b, a, c, a,  , b]
+[a, b, a, c, a, c, b]*/
+//的是偶数和奇数的问题。
+for(int count: counts){
+   while(count > 0){
+   	if( i > n){
+		i = 1;
+	}
+	//正常的输入数据。
+	i+=2;
+   }
+}
+~~~
+# AQS的原理
+[解释](https://www.jianshu.com/p/279baac48960)
+
+1. **Sync.nonfairTryAcquire** 
+
+2. **AbstractQueuedSynchronizer.addWaiter** 
+
+3.  **AbstractQueuedSynchronizer.acquireQueued** 
+
+   ==进行阻塞了.==
+
+4. 解锁
+---
+非公锁实现方式就是：首先获取到当前线程，判断当前锁的状态是否为0，如果是，说明当前锁没有被其他线程占有，则利用CAS操作将锁的状态从0置为1成功后，将锁的持有者置为当前线程。
+
+---
+
+公平锁的实现，就是在非公平锁的实现上，加了一层判断hasQueuedPredecessors()，该方法的大概意思是判断是否有线程等待的时间比当前线程等待时间还要久，如果有返回true,则当前线程获取锁失败，如果没有返回false，当前线程获取到锁，也就是判断当前线程是否是等待队列的队头元素， 
+
+| nextWaiter状态标志  |             说明             |
+| :-----------------: | :--------------------------: |
+|  SHARED(共享模式)   |      直接唤醒下一个节点      |
+| EXCLUSIVE(独占模式) | 等待当前线程执行完成后再唤醒 |
+
+ [java](http://cpro.baidu.com/cpro/ui/uijs.php?adclass=0&app_id=0&c=news&cf=1001&ch=0&di=128&fv=0&is_app=0&jk=46f05a5d5e52dd59&k=java&k0=java&kdi0=0&luki=1&mcpm=0&n=10&p=baidu&q=65035100_cpr&rb=0&rs=1&seller_id=1&sid=59dd525e5d5af046&ssp2=1&stid=9&t=tpclicked3_hc&td=1836545&tu=u1836545&u=http%3A%2F%2Fwww.bubuko.com%2Finfodetail-554279.html&urlid=0)的并发包中提供了ReadWriteLock，读-写锁。**它允许一个资源可以被多个读操作访问，或者被一个 写操作访问，但两者不能同时进行**。 
+
+ FairSyn和NofairSync。**结论：ReentrantLock是以独占锁的加锁策略实现的互斥锁，同时它提供了公平和非公平两种锁获取方式**。 
+# Java内存模型
+read，write，load，use，assign，store，lock，unlock
+---
+# 内存泄露排查（基本的思路是什么？）
+查看GC情况==》查看存活对象；
+基本的命令：[命令](https://blog.csdn.net/zhengwei223/article/details/77151224)
+jps：status Tool；
+...
+# 异常的几个常见错误
+**无权限，空指针，数学错误，下标，类没找到，参数错误。**
+# 一次性的要取3个元素的问题
+**我第一次实现的话，利用的是一个取一个，然后呢多重的循环。例如有的是三角边的获取**
+可是呢，真正的是需要一次性的获取3个。A[i],A[i-1],A[i-2];
+所以有的是。。。
 # 对角线的矩阵元素遍历
 其实他就是考了一个知识点
 $$x+y=c$$一个初中都知道的线
