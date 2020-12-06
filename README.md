@@ -13,6 +13,16 @@ eg2：下一个更大元素II
 ·对他进行求余；
 
 在自由子路的一个循环的n中对他进行的是i，n-i的操作了。
+~~~ java
+for (int i = 1; i < m; ++i) {
+            for (int j : pos[key.charAt(i) - 'a']) {
+                for (int k : pos[key.charAt(i - 1) - 'a']) {
+                    dp[i][j] = Math.min(dp[i][j], dp[i - 1][k] + Math.min(Math.abs(j - k), n - Math.abs(j - k)) + 1);
+                }
+            }
+        }
+        return Arrays.stream(dp[m - 1]).min().getAsInt();
+~~~
 
 eg3：在一个序列中，k位最大的元素，需要保持我们的队列顺序不变的。
 
@@ -100,6 +110,42 @@ $$x+y=c$$一个初中都知道的线
 1：升序的意思。
 
 # 最长的子序列length
+~~~ java
+  public int lengthOfLISMe(int[] nums) {
+
+        int len = nums.length;
+        //处理长度的
+        if (len == 0){
+            return 0;
+        }
+        int[] dp = new int[len+1];
+        int n = 1;
+        //因为定义说的是长度为1的有max为num。
+        dp[n] = nums[0];
+        for (int i = 0; i < len; i++) {
+            int temp = nums[i];
+            if(temp > dp[n]) {
+                dp[++n] = temp;
+            }else{
+//              要的是说有从i到num < dp[i];找不到的话，说明我们的初始化问题，更新dp[1].
+                int l = 1, r = n, pos = 0;
+                while(l<= r) {
+                    int mid = (l+r)>>1;
+                    if(nums[mid] < temp) {
+                        pos = mid;
+                        l = mid+1;
+                    } else {
+                        r = mid - 1;
+                    }
+                }
+                dp[pos+1] = temp;
+                System.out.println("dp"+(pos+1)+"num is "+ dp[pos+1]);
+            }
+        }
+        System.out.println(Arrays.toString(dp));
+        return n;
+    }
+~~~
 有如下几个点需要注意:
 nums = [1 2 3 2 4];
 1) dp数组的定义问题, dp = new int[len+1];
