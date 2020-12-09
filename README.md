@@ -73,6 +73,19 @@ if(mid > tar/*这是对于左边的边界来说的，*/){
 } else{
 	left = mid+1;
 }
+public int binarySearch(int[] nums, int target, boolean lower) {
+        int left = 0, right = nums.length - 1, ans = nums.length;
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (nums[mid] > target || (lower && nums[mid] >= target)) {
+                right = mid - 1;
+                ans = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return ans;
+    }
 ~~~
 # 字符的交替的输出的问题
 有遇到一个问题是；怎么回到第一个位置呢？
