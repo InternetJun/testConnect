@@ -1,3 +1,21 @@
+# 对正则表达式的问题了
+//abc{1,3}+cd和abccd是不匹配的！
+  //abc{1,3}d和abccd是匹配的！
+  有贪婪模式+,懒惰模式?和普通的情况.
+  ~~~ java
+  @Test
+    public void testPlace() {
+        Pattern pattern = Pattern.compile("^abc{1,3}+d$");
+        Matcher matcher = pattern.matcher("abccd");
+        boolean isFound = false;
+        if (isFound=matcher.find()){
+            System.out.println("ok");
+            System.out.println(matcher.group(0));
+        } else {
+            System.out.println("not match!");
+        }
+    }
+  ~~~
 ## 全局变量初始化的问题
 ***有path为一个List数组,有的问题:***
 1, 对全局的变量来说,有里面的元素是没有情空空的,
