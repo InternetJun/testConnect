@@ -1,3 +1,21 @@
+# 遇到了很好玩的正则表达式
+~~~notepad给每行的最后加上一个符号的实现:
+*$---> }可以实现的在每行的最后加上一个};*
+还有的事情\n代表了换行的处理了.
+~~~
+**在testConnect种会有对文件夹读取文件的,还有的是对文件名统一去除空格的.**
+
+~~~ windows
+@echo off&setlocal enabledelayedexpansion
+for /f "delims=" %%i in ('dir /s/b *.*') do (
+    set "foo=%%~nxi"
+    set foo=!foo: =!
+    set foo=!foo: =!
+    ren "%%~fi" "!foo!"
+)
+exit
+~~~
+
 # 对元素的补齐的问题
 leetcode1229的每日一题的解释了,
 # 对正则表达式的问题了
