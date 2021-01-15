@@ -1,7 +1,20 @@
+# 二维的数组对每个元素排序
+**和一维数组排序对应起来哦，有点区别的**
+~~~ java
+Collections.sort(ls,new Compartor<int[]>(){
+	@Override
+	public int compare(int[] x, int[] y) {
+		if(x[0] == y[0]){
+			return x[1]-y[1];
+		}
+		return x[0]-y[0];
+	}
+});
+~~~
 # 遇到了很好玩的正则表达式
 ~~~notepad给每行的最后加上一个符号的实现:
 *$---> }可以实现的在每行的最后加上一个};*
-还有的事情\n代表了换行的处理了.
+还有的事情表了换行的处理了.
 ~~~
 **在testConnect种会有对文件夹读取文件的,还有的是对文件名统一去除空格的.**
 
