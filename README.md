@@ -1,3 +1,5 @@
+## 微服务的跨域
+它的问题是什么？有什么的需求呢？具体的问题是什么啊？
 ## slideWindow
 有的是说求一个window下的中位数了  
 【1 2 3 3 5】；k = 3；
@@ -10,6 +12,24 @@ for(int i = k; i < n-k; i++){
 	dh.insert(i);
 	dh.erarse(i-k);
 	ans[i-k+1] = getMidean();
+}
+~~~
+
+有一个延迟删除ele的问题
+~~~ java
+public void prune(PriorityQueue<Integer> heap) {
+	while(!heap.isEmpty()) {
+		int num = heap.peek();
+		if(delayed.containsKey(num)) {
+			delayed.put(num, delayed.get(num)-1);
+			if(delayed.get(num) == 0) {
+				delayed.remove(num);
+			}
+			heap.poll();
+		} else {
+			break;
+		}
+	}
 }
 ~~~
 # 二维的数组对每个元素排序
