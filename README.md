@@ -1,5 +1,44 @@
 ## 微服务的跨域
 它的问题是什么？有什么的需求呢？具体的问题是什么啊？
+**可以理解为crsf攻击。还有对Auth的认证功能**  
+怎么破解crsf的攻击呢？
+[springSecurity的处理问题](http://www.javaboy.org/2020/0611/cors-springsecurity.html)
+·1 安全的SpringSecurity问题。
+~~~ java
+要知道的是所以的网页请求都是一个fliter
+对他的处理是加上一个fliter的功能。
+@Configuration
+public class GlobalCorsConfiguration {
+    @Bean
+    public CorsFilter corsFilter() {
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.setAllowCredentials(true);
+        corsConfiguration.addAllowedOrigin("*");
+        corsConfiguration.addAllowedHeader("*");
+        corsConfiguration.addAllowedMethod("*");
+        UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
+        urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
+        return new CorsFilter(urlBasedCorsConfigurationSource);
+    }
+}
+~~~
+·2 普通的项目。
+~~~ java
+@CrossOrigin(value = "http://localhost:8081")
+表示的是对这项目中接受来自8081端口的请求。实公司有很多行的其他公司的外接端口和网址、
+//实际的解决方案
+@Configuration
+public class WebMvcConfig implements WebMvcConfigurer {
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+        .allowedOrigins("http://localhost:8081")
+        .allowedMethods("*")
+        .allowedHeaders("*");
+    }
+}
+~~~
+
 ## slideWindow
 有的是说求一个window下的中位数了  
 【1 2 3 3 5】；k = 3；
