@@ -1,3 +1,22 @@
+## 指针的问题
+[爱生气的书店老板](https://leetcode-cn.com/problems/grumpy-bookstore-owner/)  
+需要的注意的做法是什么？  
+~~~ java
+for(int i = 0, j = 0; i < n; i++) {
+    cur += cs[i];
+    if(i-1-j > x) {
+        cur -= cs[j++];
+    }
+    max = Math.max(max,cur);
+}
+~~~
+## 递归的先后顺序
+func(a,b)  
+执行代码块0
+保存现场准备进入下一层
+**接受下层返回的数据**
+恢复现场
+继续执行代码块1
 ## 微服务的跨域
 它的问题是什么？有什么的需求呢？具体的问题是什么啊？
 **可以理解为crsf攻击。还有对Auth的认证功能**  
