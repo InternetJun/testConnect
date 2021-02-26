@@ -1,3 +1,16 @@
+## 对每个字母是否是出现过的问题了
+·我自己的想法是利用了对26个字母的遍历的个数；  
+·真实的答案是说，有aabb==》利用11来表示。accc==》利用的是101来表示了。  
+[Leetcode1178](https://leetcode-cn.com/problems/number-of-valid-words-for-each-puzzle/solution/zhuang-tai-ya-suo-zi-ji-ti-jie-yi-dong-c-bdx8/)   
+子集的问题？  
+就是一个什么呢？对数据的选与不选的问题了
+~~~ java
+t.add(cur);
+dfs(cur+1, nums)
+t.remove(cur);
+dfs(cur+1, nums);
+~~~
+
 ## 指针的问题
 [爱生气的书店老板](https://leetcode-cn.com/problems/grumpy-bookstore-owner/)  
 需要的注意的做法是什么？  
