@@ -54,6 +54,7 @@ public class Main{
                 s1.push(ss);
             }
         }
+        //他的情况是怎么样的呢？为什么会出现呢？例如有1+((2+3)*4)-5最后的"-"符号的时候，他最后是压入栈里面的。所以会有S1.isEmpty() == false;的！！
         while (s1.size() != 0) {
             lss.add(s1.pop());
         }
