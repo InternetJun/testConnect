@@ -1,3 +1,47 @@
+## 可连续处理很多次的
+~~~ java
+ public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String str;
+        /*这里的是随意的处理几行的数据了。*/
+        while((str=br.readLine())!=null){
+            String[] s = str.trim().split(" ");
+            int n = Integer.valueOf(s[0]);
+            int t = Integer.parseInt(s[1]);
+            int c = Integer.parseInt(s[2]);
+            int[] value = new int[n];
+            if((str=br.readLine())!=null){
+                String[] s2 = str.trim().split(" ");
+                for(int i =0;i<n;i++){
+                    value[i] = Integer.parseInt(s2[i]);
+                }
+            }
+            System.out.println(carryMan(n,t,c,value));
+        }
+        br.close();
+    }
+
+~~~
+**又一次的遇见了滑动窗口了**   
+~~~ java
+public int canMan(int n, int t, int c, int[] value) {
+	int sum = 0, res = 0;
+	for(int i = 0; i < c; i++){
+		sum += value[i];
+	}
+	if(sum < t) {
+		res++;
+	}
+	for(int i = c; i < n; i++) {
+		sum += sum-value[i-c]+value[i];
+		if(sum < t){
+			res++;
+		}
+	}
+	return res;
+}
+~~~
+
 ## 对每个字母是否是出现过的问题了
 ·我自己的想法是利用了对26个字母的遍历的个数；  
 ·真实的答案是说，有aabb==》利用11来表示。accc==》利用的是101来表示了。  
