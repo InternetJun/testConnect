@@ -1,3 +1,16 @@
+## HashMap的key和value为空的为问题 了
+
+单线程Value可以为空的
+
+concurrentHashMap是不可以的。解释如下
+
+>线程A调用concurrentHashMap.get(key)方法,返回为null，我们还是不知道这个null是没有映射的null还是存的值就是null。
+>
+>我们假设此时返回为null的真实情况就是因为这个key没有在map里面映射过。那么我们可以用concurrentHashMap.containsKey(key)来验证我们的假设是否成立，我们期望的结果是返回false。
+>
+>但是在我们调用concurrentHashMap.get(key)方法之后，containsKey方法之前，有一个线程B执行了concurrentHashMap.put(key,null)的操作。那么我们调用containsKey方法返回的就是true了。这就与我们的假设的真实情况不符合了。也就是上面说的二义性。<font color='red'>就是会有歧义的。程序是允许的！</font>
+
+
 ## 可连续处理很多次的
 ~~~ java
  public static void main(String[] args) throws IOException {
