@@ -1,3 +1,4 @@
+
 //对计算器的中后缀的表示
 import java.util.*;
 
@@ -117,5 +118,13 @@ class Operation{
         }
         return result;
     }
+        
+class xiecheng{
+ // 他要计算的是什么呢？有一个操作数和很多的数。
+/*
+我的问题出现了1，switch case的写法。2，对数据的处理不当了。
+*/
+
+}
 
 }
