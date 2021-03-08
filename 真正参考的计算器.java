@@ -124,6 +124,69 @@ class xiecheng{
 /*
 我的问题出现了1，switch case的写法。2，对数据的处理不当了。
 */
+	public void count(String s) {
+		
+		Deque stack = new LinkedList();
+		int i = 0;
+		String tempC = "";
+		while(i < s.length()) {
+			char c = s.charAt(i);
+			if(c == ')'){
+				Stack<String> tempList = new Stack();
+				String temp = stack.pop();//就是一个（符号。
+				while(!"(".equals(temp)){
+					tempList.add(temp);
+					temp = stack.pop();
+				}
+				int ans = 0;
+				switch(tempList.pop()) {
+					 case "+":
+                            while(!tempList.empty()){
+                                ans+=Integer.parseInt(tempList.pop());
+                            }
+                            break;
+                        case "-":
+                            ans=Integer.parseInt(tempList.pop());
+                            while(!tempList.empty()){
+                                ans-=Integer.parseInt(tempList.pop());
+                            }
+                            break;
+                        case "*":
+                            ans=Integer.parseInt(tempList.pop());
+                            while(!tempList.empty()){
+                                ans*=Integer.parseInt(tempList.pop());
+                            }
+                            break;
+                        default:
+                            break;
+				}
+				stack.push(String.valueOf(ans));
+				i++;
+				continue;
+			}
+					
+			
+		}
+			
+			if(c == '('||c=='+'||c=='-'||c=='*'){
+                    stack.push(String.valueOf(c));
+                    i++;
+                    continue;
+            }
+			
+			if(c == ' ') {
+				i++;
+				continue;
+			}
+			String temp = "";
+			while(i+1 < s.length() && c!=' ' && c != ')') {
+				temp += c;
+				c = s.charAt(++i);
+			}
+			stack.addFirst(temp);
+			//这里的temp就是什么的情况呢？吧（和符号+数字全部加入了。
+		}
+	}
 
 }
 
