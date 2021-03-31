@@ -1,3 +1,63 @@
+## 剑指Offer的自己实现正则表达式
+[正则表达式](https://www.nowcoder.com/practice/28970c15befb4ff3a264189087b99ad4?tpId=13&tqId=11205&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&tab=answerKey)
+~~~ java
+import java.util.*;
+
+public class Solution {
+    /**
+     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+     *
+     * 
+     * @param str string字符串 
+     * @param pattern string字符串 
+     * @return bool布尔型
+     */
+    public boolean match (String str, String pattern) {
+        char[] strings = str.toCharArray();
+        char[] patterns = pattern.toCharArray();
+        if (str == null || pattern == null) {
+            return false;
+        }
+        int strIndex = 0;
+        int patternIndex = 0;
+        return matchCore(strings, strIndex, patterns, patternIndex);
+    }
+
+    public boolean matchCore(char[] str, int strIndex, char[] pattern, int patternIndex) {
+        // 有效性检验：str到尾，pattern到尾，匹配成功
+        if (strIndex == str.length && patternIndex == pattern.length) {
+            return true;
+        }
+        // pattern先到尾，匹配失败
+        if (strIndex != str.length && patternIndex == pattern.length) {
+            return false;
+        }
+        // 模式下一位是*，且字符串当前位跟模式当前位匹配,分3种匹配模式；如不匹配，模式后移2位
+        // 模式下一位为'*'
+        if (patternIndex + 1 < pattern.length && pattern[patternIndex + 1] == '*') {
+            // 字符串当前位与模式当前位匹配
+            if ((strIndex != str.length && pattern[patternIndex] == str[strIndex])
+                    || (pattern[patternIndex] == '.' && strIndex != str.length)) {
+                        // 模式后移2，视为x*匹配0个字符
+                return matchCore(str, strIndex, pattern, patternIndex + 2)
+                        // 视为模式匹配1个字符
+                        || matchCore(str, strIndex + 1, pattern, patternIndex + 2)
+                        // *匹配1个，再匹配str中的下一个
+                        || matchCore(str, strIndex + 1, pattern, patternIndex);
+            // 字符串当前位与模式当前位不匹配
+            } else {
+                return matchCore(str, strIndex, pattern, patternIndex + 2);
+            }
+        }
+        // 模式下一位不是*，且字符串当前位跟模式当前位匹配，则都后移1位，否则直接返回false
+        if ((strIndex != str.length && pattern[patternIndex] == str[strIndex])
+                || (pattern[patternIndex] == '.' && strIndex != str.length)) {
+            return matchCore(str, strIndex + 1, pattern, patternIndex + 1);
+        }
+        return false;
+    }
+}
+~~~ 
 ## HashMap的key和value为空的为问题 了
 
 单线程Value可以为空的
