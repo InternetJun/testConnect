@@ -1,3 +1,67 @@
+## 对字母排序后有间接位置不同
+有要明白的是字母要是有超过一半的情况啊。
+~~~  java
+for() {
+	while(oddInd < len) {
+		oddInd += 2;
+		
+	}
+	
+	while(evenInd < len) {
+		evenInd += 2;
+	}
+}
+他可以实现的问题是对偶数的坐标先填满的。后面直接去填的是奇数的坐标了。很有趣的一个技术了。
+~~~
+## 对数字转换为中文的实现
+~~~ java
+class Demo03 {
+    private static Scanner sc ;
+
+    private static String input;
+
+    private static String units[] = {"","十","百","千","万","十","百","千","亿"};
+
+    private static String nums[] = {"零","一","二","三","四","五","六","七","八","九","十"};
+
+    private static String result[] ;
+
+    public static void input() {
+        System.out.println("请输入一串数字：如123456，最多9位");
+        sc = new Scanner(System.in);
+        input = sc.nextLine();
+    }
+    
+    //234124034
+    public static String get(String input) {
+        String out = "";
+        result = new String[input.length()];
+        for(int i=0;i<result.length;i++) {
+            result[i] = String.valueOf(input.charAt(i));
+        }
+        int back = 0;
+        for(int i=0;i<result.length;i++) {
+            if(!result[i].equals("0")) {
+                back = result.length-i-1;
+                out += nums[Integer.parseInt(result[i])];
+                out += units[back];
+            }else {
+                if(i==result.length-1) {
+                    break;
+                }else {
+                        out += nums[0];
+		   }
+            }
+        }
+        return out;
+    }
+
+    public static void main(String[] args) {
+        input();
+        System.out.println(get(input));
+    }
+}
+~~~
 ## 剑指Offer的自己实现正则表达式
 [正则表达式](https://www.nowcoder.com/practice/28970c15befb4ff3a264189087b99ad4?tpId=13&tqId=11205&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&tab=answerKey)
 ~~~ java
