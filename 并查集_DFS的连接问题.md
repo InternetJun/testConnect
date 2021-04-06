@@ -1,4 +1,18 @@
 # 并查集
+
+## 基本的路径搜索问题
+[路径搜索问题](https://www.nowcoder.com/practice/2a49359695a544b8939c77358d29b7e6?tpId=13&tqId=11218&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking&tab=answerKey)
+~~~ java
+public boolean dfs(int i, int j, int k) {
+	if(i || j || board[i][j] != word[k]) {
+		return false;
+	}
+	board[i][j] = '\0';
+	boolean res = dfs()||dfs();
+	board[i][j] = word[k];
+	return res;
+}
+~~~
 **具有连通性的问题，就是一个图论，并查集的问题啊！！！**
 ---
 **我的问题是不同的顺序是怎么得到不同的结果的？**
